@@ -1,5 +1,8 @@
 package com.springcore.lifecycle;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 public class Samosa {
 	private double price;
 
@@ -22,10 +25,14 @@ public class Samosa {
 		return "Samosa [price=" + price + "]";
 	}
 	
+	
+	
+	@PostConstruct // using annotation
 	public void init() {
 		System.out.println("Inside init");
 	}
 	
+	@PreDestroy
 	public void destroy() {
 		System.out.println("Inside destroy");
 	}
