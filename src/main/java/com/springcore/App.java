@@ -1,14 +1,17 @@
 package com.springcore;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.springcore.autowired.Employee;
 import com.springcore.constructorInjection.Person;
+import com.springcore.javaconfig.Javaconfig;
 import com.springcore.lifecycle.Samosa;
 import com.springcore.ref.A;
 import com.springcore.spel.Demo;
+import com.springcore.javaconfig.*;
 import com.springcore.standalone.collections.*;
 import com.springcore.sterotype.annotation.Sports;
 /**
@@ -80,9 +83,17 @@ public class App
         System.out.println(s1);
         System.out.println(s1.getTeams());*/
         
-        ApplicationContext context = new ClassPathXmlApplicationContext("com/springcore/spel/spelconfig.xml");
+        
+        // spring expression language
+      /*  ApplicationContext context = new ClassPathXmlApplicationContext("com/springcore/spel/spelconfig.xml");
         
         Demo d1 = context.getBean("demo", Demo.class);
-        System.out.println(d1);
+        System.out.println(d1);*/
+        
+        // configuations using annotation and java
+        
+        ApplicationContext context = new AnnotationConfigApplicationContext(Javaconfig.class);
+        com.springcore.javaconfig.Demo d = context.getBean("demo", com.springcore.javaconfig.Demo.class);
+        d.test();
     }
 }
